@@ -1,0 +1,28 @@
+<h1>文章列表</h1>
+
+<%= paginate @articles %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>序号</th>
+      <th>文章标题</th>
+      <th>评论数</th>
+      <th>发表时间</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% i = (@articles.current_page-1)*@articles.limit_value %>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= i=i+1%></td>
+        <td><%= link_to article.title, article_path(article) %></td>
+        <td><%= article.comment_count %></td>
+        <td><%= article.created_at.strftime('%Y-%m-%d') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @articles %>

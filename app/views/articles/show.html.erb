@@ -1,0 +1,28 @@
+<div class="row mt-2 mb-2">
+  <div class="col-md-8">
+
+    <h2><%= @article.title %></h2>
+
+    <p>&nbsp;</p>
+    <p>总共 <%= @comments.total_count %> 条评论，本页 <%= @comments.count%> 条，总共分 <%= @comments.total_pages %> 页</p>
+
+    <%= paginate @comments %>
+
+    <% @comments.each do |comment| %>
+      <div class="media mb-4" style="border-bottom: 1px solid #efefef">
+        <img class="mr-3" src="<%= comment.user_avatar %>" alt="" width="64" height="64">
+        <div class="media-body">
+          <h5 class="mt-0"><%= comment.user_name %></h5>
+          <%= simple_format comment.content.html_safe %>
+          <%= comment.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+        </div>
+      </div>
+    <% end %>
+
+    <%= paginate @comments %>
+
+  </div>
+  <div class="col-md-4">
+    <%= link_to '返回文章列表', articles_path, class: 'btn btn-primary' %>
+  </div>
+</div>
