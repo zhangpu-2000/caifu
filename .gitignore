@@ -18,10 +18,20 @@
 
 /node_modules
 /yarn-error.log
+yarn-debug.log*
+.yarn-integrity
 
 /public/assets
+/public/packs
+/public/packs-test
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 *.sql
+*.csv
+*.csv#
+
+# 我喜欢忽略掉 db 配置文件，服务器端和开发端各自依照 sample 文件独立配置
+/config/database.yml
+/config/puma.rb
