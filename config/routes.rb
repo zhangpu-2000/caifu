@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  resources :articles
-  resources :comments
+  resources :articles, only: [:index, :show]
 
   root 'articles#index'
 end
